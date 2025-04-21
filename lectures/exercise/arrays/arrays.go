@@ -18,6 +18,39 @@ package main
 
 import "fmt"
 
+type Shopitem struct {
+	name  string
+	price int
+}
+
+func checkShoplist(shopList [4]Shopitem) {
+	totalPrice := 0
+
+	for i := 0; i < len(shopList); i++ {
+		shopList := shopList[i]
+
+		totalPrice = shopList.price + totalPrice
+	}
+
+	fmt.Println("Last item of list: ", shopList[len(shopList)-1])
+	fmt.Println("Total number of items: ", len(shopList))
+	fmt.Println("Total cost of items:", totalPrice)
+}
+
 func main() {
+
+	shopList := [4]Shopitem{
+		{name: "Banana", price: 4},
+		{name: "Una patata", price: 1},
+		{name: "Fish", price: 10},
+	}
+
+	checkShoplist(shopList)
+
+	fmt.Println("Adding the last product")
+
+	shopList[3] = Shopitem{"bread", 5}
+
+	checkShoplist(shopList)
 
 }
