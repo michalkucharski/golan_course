@@ -18,6 +18,52 @@ package main
 
 import "fmt"
 
+const (
+	Activated    = true
+	Desactivated = false
+)
+
+type SecurityTag bool
+
+type Item struct {
+	name string
+	tag  SecurityTag
+}
+
+func activate(tag *SecurityTag) {
+	*tag = Activated
+}
+
+func inactivate(tag *SecurityTag) {
+	*tag = Desactivated
+}
+
+func checkout(items []Item) {
+	for i := 0; i < len(items); i++ {
+		fmt.Println("item:", items[i])
+		inactivate(&items[i].tag)
+
+	}
+
+}
+
 func main() {
+
+	items := []Item{
+		{name: "T-shirt", tag: true},
+		{name: "Short", tag: true},
+		{name: "Cap", tag: true},
+		{name: "Bra", tag: true},
+	}
+
+	fmt.Println("State without any changes", items)
+
+	inactivate(&items[2].tag)
+
+	fmt.Println(items)
+
+	checkout(items)
+
+	fmt.Println("All items desactivated", items)
 
 }
