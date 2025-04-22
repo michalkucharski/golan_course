@@ -17,11 +17,26 @@
 
 package main
 
-type rectangle struct {
+import "fmt"
+
+type Rectangle struct {
 	length int
 	width  int
 }
 
+func areaCalc(rectangle Rectangle) int {
+	return rectangle.length * rectangle.width
+}
+
+func perimeterCalc(rectangle Rectangle) int {
+	return 2*rectangle.length + 2*rectangle.width
+}
+
 func main() {
+
+	var rectangle = Rectangle{length: 8, width: 4}
+
+	fmt.Println("Calculated area:", areaCalc(rectangle))
+	fmt.Println("Calculated perimeter", perimeterCalc(rectangle))
 
 }
