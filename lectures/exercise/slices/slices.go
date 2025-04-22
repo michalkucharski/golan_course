@@ -14,7 +14,30 @@
 
 package main
 
+import "fmt"
+
 type Part string
 
+func printSlice(title string, slice []string) {
+	fmt.Println()
+	fmt.Println("---", title, "---")
+	for i := 0; i < len(slice); i++ {
+		element := slice[i]
+		fmt.Println(element)
+	}
+
+}
+
 func main() {
+
+	parts := []string{"motor", "chasis", "wheels"}
+	printSlice("First assembly", parts)
+
+	parts = append(parts, "windscreen")
+	parts = append(parts, "radio")
+	printSlice("Second assembly", parts)
+
+	parts = parts[3:]
+	printSlice("Third assembly", parts)
+
 }
