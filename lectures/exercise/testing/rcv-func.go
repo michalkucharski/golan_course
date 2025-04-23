@@ -69,21 +69,3 @@ func (player *Player) ConsumingEnergy(amount uint) {
 
 	fmt.Println("Actual player statistics:", player)
 }
-
-func main() {
-
-	myPlayer := Player{
-		name:      "Gorag",
-		health:    200,
-		maxHealth: 200,
-		energy:    300,
-		maxEnergy: 400,
-	}
-
-	myPlayer.ApplyDamage(34)
-	myPlayer.ConsumingEnergy(100)
-	myPlayer.AddEnergy(2)
-	myPlayer.AddHealth(34)
-	myPlayer.ConsumingEnergy(600)
-
-}
