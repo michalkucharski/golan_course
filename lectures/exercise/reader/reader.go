@@ -18,8 +18,57 @@
 
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
 func main() {
 
+	scanner := bufio.NewScanner(os.Stdin)
+
+	// Statistics
+	nonBlankLines := 0
+	commandsEntered := 0
+
+	fmt.Println("Enter commands (type 'Q' or 'q' to exit):")
+
+	for scanner.Scan() {
+		input := scanner.Text()
+
+		// Check for exit condition
+		if input == "Q" || input == "q" {
+			break
+		}
+
+		// Count non-blank lines
+		if strings.TrimSpace(input) != "" {
+			nonBlankLines++
+		}
+
+		// Check for commands and respond
+		switch strings.ToLower(input) {
+		case "hello":
+			fmt.Println("Hello! How are you ?")
+			commandsEntered++
+		case "hi":
+			fmt.Println("Hi there! How are you ?")
+			commandsEntered++
+		case "bye":
+			fmt.Println("Goodbye!")
+			commandsEntered++
+		}
+	}
+
+	// Check for scanner errors
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "Error reading input:", err)
+	}
+
+	// Print statistics
+	fmt.Println("\nProgram Statistics:")
+	fmt.Printf("Non-blank lines entered: %d\n", nonBlankLines)
+	fmt.Printf("Commands entered: %d\n", commandsEntered)
 }
